@@ -1,0 +1,77 @@
+Add new settings in emacs for menu,scroll,tool bar.
+
+Just use git to clone and emacs.d and get it to every where
+
+(menu-bar-mode 1)
+(tool-bar-mode 1)
+(scroll-bar-mode 1)
+#global line number
+(global-linum-mode t)
+(global-linum-mode 1)
+
+
+
+
+;; INSTALL PACKAGES
+;; --------------------------------------
+
+(require 'package)
+
+(add-to-list 'package-archives
+       '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar myPackages
+  '(better-defaults
+    ein
+    elpy
+    flycheck
+    material-theme
+    py-autopep8))
+
+(mapc #'(lambda (package)
+    (unless (package-installed-p package)
+      (package-install package)))
+      myPackages)
+
+;; BASIC CUSTOMIZATION
+;; --------------------------------------
+
+(setq inhibit-startup-message t) ;; hide the startup message
+(load-theme 'material t) ;; load material theme
+(global-linum-mode t) ;; enable line numbers globally
+
+;; PYTHON CONFIGURATION
+;; --------------------------------------
+
+(elpy-enable)
+(elpy-use-ipython)
+
+;; use flycheck not flymake with elpy
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; enable autopep8 formatting on save
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+
+
+#emacs help running
+
+$ emacs --daemon
+$ emacsclient -c
+$ emacsclient -t
+emacsclient -c opens up a new Emacs GUI frame, while emacsclient -t fires up a new terminal frame. And the best part – all the buffers currently opened can be shared between as many clients as it pleases you.
+You can push the idea a notch further and connect to an Emacs daemon running on a remote machine.
+
+#mastering emacs
+https://www.masteringemacs.org/reading-guide
+#emacs wiki
+https://www.emacswiki.org/emacs/LineNumbers
+
+
