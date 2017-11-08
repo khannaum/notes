@@ -73,5 +73,6 @@ You can push the idea a notch further and connect to an Emacs daemon running on 
 https://www.masteringemacs.org/reading-guide
 #emacs wiki
 https://www.emacswiki.org/emacs/LineNumbers
-
+python check file size added
+if os.stat(url).st_size > 1024:
 
