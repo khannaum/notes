@@ -1,0 +1,24 @@
+geoview:
+
+AT
+cd D:\geoviews-examples
+d:
+SET http_proxy=http://nauman%2Ekhan:Bamy%40%23%4012345@srvisbisa01.mobilink.net.pk:8080
+SET https_proxy=https://nauman%2Ekhan:Bamy%40%23%4012345@srvisbisa01.mobilink.net.pk:8080
+
+jupyter notebook
+
+conda install -c ioam/label/dev holoviews geoviews
+%%SET http_proxy=http://nauman%2Ekhan:Lamy%40%23%4012345@srvisbisa01.mobilink.net.pk:8080
+%%SET https_proxy=https://nauman%2Ekhan:Lamy%40%23%4012345@srvisbisa01.mobilink.net.pk:8080
+%%export http_proxy
+%%export https_proxy
+
+
+(defun connect-remote ()
+  (interactive)
+  (dired "/user@192.168.1.5:/"))
+
+  
+  
+  
