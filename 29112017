@@ -1,0 +1,8 @@
+#remove all non-ASCII characters from dataframe and string brute force
+trx_new['BTS Index'].replace(r'[^\x00-\x7F]+','',regex=True,inplace=True)
+
+import re
+# substitute sequence of non-ASCII characters with single space
+str = re.sub(r'[^\x00-\x7F]+',' ', str)
+
+
